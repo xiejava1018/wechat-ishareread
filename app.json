@@ -1,0 +1,47 @@
+{
+
+  "pages": [
+    "views/home/home",
+    "views/sort/sort",
+    "views/mine/mine"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "爱分享读书",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "views/home/home",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home_HL.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "views/sort/sort",
+        "iconPath": "image/sort.png",
+        "selectedIconPath": "image/sort_HL.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "views/mine/mine",
+        "iconPath": "image/mine.png",
+        "selectedIconPath": "image/mine_HL.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

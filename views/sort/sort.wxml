@@ -1,0 +1,33 @@
+
+
+<view class="view-sort">
+  <view class="cont">
+    <view class="list">
+      <view bindtap="sortChangeSort" data-sort-index="{{index}}" wx:for="{{bookclassArray}}" wx:key="bookClassId" class="">{{item.bookClassName}}</view>
+    </view>
+    <scroll-view scroll-y class="result">
+         <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">{{selectedclass}}</view>
+            <view class="weui-panel__bd" data-sort-index="{{index}}" wx:for="{{booklist}}" wx:key="bookId">
+                <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{item.bookImage}}" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{item.bookName}}</view>
+                        <view class="weui-media-box__desc">{{item.bookContentDesc}}</view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="weui-panel__ft">
+                <view class="weui-cell weui-cell_access weui-cell_link">
+                    <view class="weui-cell__bd">查看更多</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </view>
+            </view>
+        </view>
+
+
+    </scroll-view>
+  </view>
+</view>

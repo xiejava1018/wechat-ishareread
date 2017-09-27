@@ -1,10 +1,13 @@
-const isharereadAPIUrl = require('../../config').isharereadUrl
-
+var message = require('../../component/message/message')
+var isharereadfetch = require('../../comm/script/fetch')
+var config = require('../../comm/script/config')
 Page({
   data:{
+    hasMore: true,
+    showLoading: true,
+    start: 0,
     selectedclass:"",
     bookclassArray:[
-      /*
       {
         "bookClassOrder": 0,
         "bookClassId": 1,
@@ -95,53 +98,31 @@ Page({
         "bookClassName": "杂志期刊",
         "subBookClass": []
       }
-      */
+ 
     ],
     booklist:[]
   },
   onLoad:function(options)
   {
-    var self = this;
-    var getParentClassApi = isharereadAPIUrl +"/bookclass/parentclass";
-    wx.request({
-      url: getParentClassApi,
-      data: {
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        //howRequestInfo()
-        console.log(res.data)
-        self.setData({
-          bookclassArray: res.data.body.bookclasslist
-        })
-      }
-    })
+
   },
-  sortChangeSort: function (e) {
-    var self = this;
-    var currentTarget = e.currentTarget,
-    index = currentTarget.dataset.sortIndex;
-    var bookClassId = this.data.bookclassArray[index].bookClassId;
-    var selectedclass = this.data.bookclassArray[index].bookClassName;
-    //取得目录下的书籍信息
-    var getParentClassApi = isharereadAPIUrl + "/wxapi/book/booklist/" + bookClassId +"?pageSize=5&curPage=0";
-    wx.request({
-      url: getParentClassApi,
-      data: {
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        //howRequestInfo()
-        console.log(res.data)
-        self.setData({
-          selectedclass: selectedclass,
-          booklist: res.data.body.booklist
-        })
-      }
-    })
+  search: function (e) {
+    var that = this
+    var keyword = e.detail.value.keyword
+    if (keyword == '') {
+      message.show.call(that, {
+        content: '请输入内容',
+        icon: 'null',
+        duration: 1500
+      })
+      return false
+    } else {
+      /*
+      var searchUrl = that.data.searchType == 'keyword' ? config.apiList.search.byKeyword : config.apiList.search.byTag
+      wx.redirectTo({
+        url: '../searchResult/searchResult?url=' + encodeURIComponent(searchUrl) + '&keyword=' + keyword
+      })
+      */
+    }
   }
 });

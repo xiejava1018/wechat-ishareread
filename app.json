@@ -1,9 +1,9 @@
 {
 
   "pages": [
-    "views/home/home",
-    "views/sort/sort",
-    "views/mine/mine"
+    "pages/home/home",
+    "pages/sort/sort",
+    "pages/mine/mine"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -18,19 +18,19 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "views/home/home",
+        "pagePath": "pages/home/home",
         "iconPath": "image/home.png",
         "selectedIconPath": "image/home_HL.png",
         "text": "主页"
       },
       {
-        "pagePath": "views/sort/sort",
+        "pagePath": "pages/sort/sort",
         "iconPath": "image/sort.png",
         "selectedIconPath": "image/sort_HL.png",
         "text": "分类"
       },
       {
-        "pagePath": "views/mine/mine",
+        "pagePath": "pages/mine/mine",
         "iconPath": "image/mine.png",
         "selectedIconPath": "image/mine_HL.png",
         "text": "我的"

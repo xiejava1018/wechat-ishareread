@@ -1,11 +1,21 @@
 
 
+
+<block wx:if="{{! showLoading}}">
+<view class="search-bar">
+    <input class="search-txt" placeholder-class="search-txt-plc" bindfocus="viewSearch" placeholder="请输入关键词搜索" type="text"/>
+</view>
+<swiper class="banner" indicator-dots="true" autoplay="true">
+    <block wx:for="{{bannerList}}" wx:for-item="bannerItem" wx:for-index="bannerIndex" wx:key="banner">
+        <swiper-item data-type="{{bannerItem.type}}" data-id="{{bannerItem.id}}" bindtap="viewBannerDetail">
+            <image src="{{bannerItem.imgUrl}}" class="banner-item"></image>
+        </swiper-item>
+    </block>
+</swiper>
+</block>
+
 <view class="view-sort">
-  <view class="cont">
-    <view class="list">
-      <view bindtap="sortChangeSort" data-sort-index="{{index}}" wx:for="{{bookclassArray}}" wx:key="bookClassId" class="">{{item.bookClassName}}</view>
-    </view>
-    <scroll-view scroll-y class="result">
+    <view class="result">
          <view class="weui-panel weui-panel_access">
             <view class="weui-panel__hd">{{selectedclass}}</view>
             <view class="weui-panel__bd" data-sort-index="{{index}}" wx:for="{{booklist}}" wx:key="bookId">
@@ -26,8 +36,10 @@
                 </view>
             </view>
         </view>
-
-
-    </scroll-view>
-  </view>
+    </view>
 </view>
+
+<import src="../../component/filmList/filmList.wxml"/>
+<template is="filmList" data="{{films: films, hasMore: hasMore, showLoading: showLoading}}"/>
+<import src="../../component/message/message.wxml"/>
+<template is="message" data="{{message: message}}"/>

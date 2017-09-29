@@ -8,7 +8,7 @@
     </view>
     <view class="search-keyword">
         <view class="search-keyword-title">书籍类目</view>
-        <view class="search-keyword-item" data-sort-index="{{index}}" wx:for="{{bookclassArray}}" wx:key="bookClassId" bindtap="searchByKeyword">{{item.bookClassName}}</view>
+        <view class="search-keyword-item" data-sort-index="{{index}}" wx:for="{{bookclassArray}}" wx:key="bookClassId" bindtap="searchByBookClass">{{item.bookClassName}}</view>
         <view class="search-keyword-title">热门标签</view>
         <view wx:for="{{hotTag}}" wx:for-item="hotTagItem" wx:key="hotTagItem" class="search-keyword-item" data-keyword="{{hotTagItem}}" bindtap="searchByTag">{{hotTagItem}}</view>        
     </view>

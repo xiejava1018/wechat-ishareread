@@ -70,11 +70,12 @@ function fetchBookList(url, selectedclass,curPage, pageSize, cb, fail_cb) {
           })
         }else{
           that.setData({
-            selectedclass: selectedclass,
-            booklist: res.data.body.booklist,
+            bookClassName: selectedclass,
+            booklist: that.data.booklist.concat(res.data.body.booklist),
+            curPage: that.data.curPage+1,
             showLoading: false
           })
-          console.log(that.data.start);
+          console.log("curPage="+curPage);
         }
         wx.stopPullDownRefresh()
         typeof cb == 'function' && cb(res.data)

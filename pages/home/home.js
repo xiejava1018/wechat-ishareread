@@ -6,7 +6,7 @@ Page({
     hasMore: true,
     showLoading: true,
     start: 0,
-    selectedclass: "",
+    bookClassName: "",
     bannerList: config.bannerList,
     bookclassArray: [
       {
@@ -111,16 +111,6 @@ Page({
     var selectedclass = this.data.bookclassArray[defclass].bookClassName;
     //取得默认目录下的书籍信息
     isharereadfetch.fetchBookList.call(that, url, selectedclass, 1, 5);
-  },
-  sortChangeSort: function (e) {
-    var that = this;
-    var currentTarget = e.currentTarget,
-      index = currentTarget.dataset.sortIndex;
-    var bookClassId = this.data.bookclassArray[index].bookClassId;
-    var selectedclass = this.data.bookclassArray[index].bookClassName;
-    var url = config.apiList.booklist + bookClassId;
-    //取得目录下的书籍信息
-    isharereadfetch.fetchBookList.call(that, url, selectedclass, 1, 5)
   },
   viewSearch: function () {
     console.log('gotosearch...');

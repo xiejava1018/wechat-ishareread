@@ -3,13 +3,15 @@
   "pages": [
     "pages/home/home",
     "pages/sort/sort",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/booklist/booklist"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "爱分享读书",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#7A7E83",

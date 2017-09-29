@@ -6,7 +6,7 @@ Page({
     hasMore: true,
     showLoading: true,
     start: 0,
-    selectedclass:"",
+    bookClassName:"",
     bookclassArray:[
       {
         "bookClassOrder": 0,
@@ -124,5 +124,17 @@ Page({
       })
       */
     }
+  },
+  searchByBookClass:function (e)
+  {
+    var that = this;
+    var currentTarget = e.currentTarget;
+    var index = currentTarget.dataset.sortIndex;
+    var bookClassId = this.data.bookclassArray[index].bookClassId;
+    var selectedclass = this.data.bookclassArray[index].bookClassName;
+    //跳转到书籍列表页面
+    wx.navigateTo({
+      url: '../booklist/booklist?bookClassId='+bookClassId+'&bookClassName='+selectedclass
+    })
   }
 });

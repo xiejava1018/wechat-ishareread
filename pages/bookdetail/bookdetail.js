@@ -92,6 +92,14 @@ Page({
       url: '../personDetail/personDetail?id=' + data.id
     })
   },
+  viewebookshare: function (e)
+  {
+    var data = e.currentTarget.dataset;
+    var bookid=data.id;
+    wx.redirectTo({
+      url: '../ebookshare/ebookshare?bookid=' + bookid
+    })
+  },
   viewFilmByTag: function (e) {
     var data = e.currentTarget.dataset
     var keyword = data.tag

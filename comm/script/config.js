@@ -25,7 +25,7 @@ module.exports = {
             byTag: 'https://api.douban.com/v2/movie/search?tag='
         },
         filmDetail: 'https://api.ishareread.com/douban/movie/subject/',
-        bookDetail:'https://api.ishareread.com/douban/book/',
+        bookDetail:'https://api.ishareread.com/ishareread/wxapi/book/doubanbook/',
         personDetail: 'https://api.douban.com/v2/movie/celebrity/',
         baiduMap: 'https://api.map.baidu.com/geocoder/v2/'
     },

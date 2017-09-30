@@ -106,7 +106,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     //isharereadfetch.fetchBookClass.call(that, config.apiList.bookclasslist, that.data.start);
-    var defclass = 1;
+    var defclass = 0;
     var url = config.apiList.booklist + defclass;
     var selectedclass = this.data.bookclassArray[defclass].bookClassName;
     //取得默认目录下的书籍信息

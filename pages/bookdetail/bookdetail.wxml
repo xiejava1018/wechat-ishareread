@@ -22,6 +22,9 @@
                 <view class="fd-intro-txt">出版日期：{{bookDetail.pubdate}}</view>
             </view>
             <view class="fd-favorite {{isFilmFavorite ? 'fd-favorite-active' : ''}}" bindtap="favoriteFilm">收藏</view>
+            <block wx:if="{{bookDetail.ShareEBook}}">
+              <view class="fd-shareebook" data-id="{{bookDetail.bookId}}" bindtap="viewebookshare" >电子书</view>
+            </block>
         </view>
         <view class="fd-data">
             <view class="fd-data-item">

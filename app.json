@@ -5,7 +5,9 @@
     "pages/sort/sort",
     "pages/mine/mine",
     "pages/booklist/booklist",
-    "pages/bookdetail/bookdetail"
+    "pages/bookdetail/bookdetail",
+    "pages/skin/skin",
+    "pages/ebookshare/ebookshare"
   ],
   "window": {
     "navigationBarTextStyle": "black",

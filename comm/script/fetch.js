@@ -96,8 +96,8 @@ function fetchBookList(url, selectedclass,curPage, pageSize, cb, fail_cb) {
   }
 }
 
-// 获取电影详情
-function fetchFilmDetail(url, id, cb) {
+// 获取书籍详情
+function fetchBookDetail(url, id, cb) {
   var that = this;
   message.hide.call(that)
   wx.request({
@@ -108,7 +108,7 @@ function fetchFilmDetail(url, id, cb) {
     },
     success: function(res){
       that.setData({
-        filmDetail: res.data,
+        bookDetail: res.data,
         showLoading: false,
         showContent: true
       })
@@ -217,7 +217,7 @@ function search(url, keyword, start, count, cb){
 module.exports = {
   fetchBookClass: fetchBookClass,
   fetchBookList: fetchBookList,
-  fetchFilmDetail: fetchFilmDetail,
+  fetchBookDetail: fetchBookDetail,
   fetchPersonDetail: fetchPersonDetail,
   search: search
 }

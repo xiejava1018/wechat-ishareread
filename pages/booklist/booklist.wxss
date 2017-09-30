@@ -1,4 +1,5 @@
 @import "../../component/message/message.wxss";
+@import "../../component/bookList/bookList.wxss";
 .search-hd {
     width: 100%;
     height: 140rpx;

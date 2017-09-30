@@ -1,5 +1,5 @@
 @import "../../comm/style/animation.wxss";
-.film {
+.book {
     box-sizing: border-box;
     width: 750rpx;
     padding: 10rpx 15rpx;
@@ -10,7 +10,7 @@
     box-shadow: 0 0 40rpx #f4f4f4 inset;
 }
 
-.film-item {
+.book-item {
     width: 350rpx;
     margin-bottom: 20rpx;
     border-radius: 10rpx;
@@ -21,17 +21,17 @@
     animation: fadeIn 1s;
 }
 
-.film-cover, .film-cover-img {
+.book-cover, .book-cover-img {
     width: 350rpx;
     height: 508rpx;
 }
 
-.film-cover {
+.book-cover {
     position: relative;
     overflow: hidden;
 }
 
-.film-rating {
+.book-rating {
     box-sizing: border-box;
     position: absolute;
     bottom: 0;
@@ -46,25 +46,25 @@
     color: #fff;
 }
 
-.file-intro {
+.book-intro {
     padding: 16rpx;
     margin-top: -8rpx;
 }
 
-.film-title {
+.book-title {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
-.film-tag {
+.book-tag {
     width: 100%;
     margin-top: 10rpx;
     display: flex;
     justify-content: flex-start;
 }
 
-.film-tag-item {
+.book-tag-item {
     padding: 4rpx 6rpx;
     margin-right: 10rpx;
     font-size: 24rpx;

@@ -24,6 +24,9 @@ Page({
       bookClassId: bookClassId,
       bookClassName: bookClassName
     })
+    wx.setNavigationBarTitle({
+      title: bookClassName
+    })
     //取得目录下的书籍信息
     isharereadfetch.fetchBookList.call(that, url, bookClassName, that.data.curPage, that.data.pageSize)
   },

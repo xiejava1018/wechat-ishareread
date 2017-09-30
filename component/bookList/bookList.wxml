@@ -1,12 +1,14 @@
+<template name="filmList">
 <block wx:if="{{showLoading}}">
     <view class="loading">玩命加载中…</view>
 </block>
-<view class="view-sort">
-    <view class="result">
+<block wx:else>
+    
+<view class="result">
          <view class="weui-panel weui-panel_access">
             <view class="weui-panel__hd">{{bookClassName}}</view>
             <view class="weui-panel__bd" data-sort-index="{{index}}" wx:for="{{booklist}}" wx:key="bookId">
-                <navigator url="../bookdetail/bookdetail?id={{item.bookDoubanId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                         <image class="weui-media-box__thumb" src="{{item.bookImage}}" />
                     </view>
@@ -18,12 +20,11 @@
             </view>
         </view>
     </view>
-</view>
-<block wx:if="{{hasMore}}">
-    <view class="loading-tip">拼命加载中…</view>
+        <block wx:if="{{hasMore}}">
+            <view class="loading-tip">拼命加载中…</view>
+        </block>
+        <block wx:else>
+            <view class="loading-tip">没有更多内容了</view>
+        </block>
 </block>
-<block wx:else>
-    <view class="loading-tip">没有更多内容了</view>
-</block>
-<import src="../../component/message/message.wxml"/>
-<template is="message" data="{{message: message}}"/>
+</template>

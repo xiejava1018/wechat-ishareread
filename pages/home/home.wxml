@@ -19,7 +19,7 @@
          <view class="weui-panel weui-panel_access">
             <view class="weui-panel__hd">{{selectedclass}}</view>
             <view class="weui-panel__bd" data-sort-index="{{index}}" wx:for="{{booklist}}" wx:key="bookId">
-                <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <navigator url="../bookdetail/bookdetail?id={{item.bookDoubanId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                         <image class="weui-media-box__thumb" src="{{item.bookImage}}" />
                     </view>
@@ -29,17 +29,9 @@
                     </view>
                 </navigator>
             </view>
-            <view class="weui-panel__ft">
-                <view class="weui-cell weui-cell_access weui-cell_link">
-                    <view class="weui-cell__bd">查看更多</view>
-                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                </view>
-            </view>
         </view>
     </view>
 </view>
 
-<import src="../../component/filmList/filmList.wxml"/>
-<template is="filmList" data="{{films: films, hasMore: hasMore, showLoading: showLoading}}"/>
 <import src="../../component/message/message.wxml"/>
 <template is="message" data="{{message: message}}"/>

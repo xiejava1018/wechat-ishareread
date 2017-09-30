@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/sort/sort",
     "pages/mine/mine",
-    "pages/booklist/booklist"
+    "pages/booklist/booklist",
+    "pages/bookdetail/bookdetail"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -96,8 +96,9 @@ Page({
   {
     var data = e.currentTarget.dataset;
     var bookid=data.id;
+    var bookname=data.name;
     wx.redirectTo({
-      url: '../ebookshare/ebookshare?bookid=' + bookid
+      url: '../ebookshare/ebookshare?bookid=' + bookid+'&bookname='+bookname
     })
   },
   viewFilmByTag: function (e) {

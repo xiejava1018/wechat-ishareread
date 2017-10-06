@@ -8,7 +8,7 @@
             <view class="fd-hd-bg" style="background-image: url({{bookDetail.images.large}})"></view>
             <image src="{{bookDetail.images.large}}" class="fd-cover"></image>
             <view class="fd-intro">
-                <view class="fd-title">{{filmDetail.title}}</view>
+                <view class="fd-title">{{bookDetail.title}}</view>
                 <view class="fd-intro-txt">作者：{{bookDetail.author[0]}}</view>
                 <view class="fd-intro-txt">出版社：{{bookDetail.publisher}}</view>
                 <view class="fd-intro-txt">豆瓣评分：
@@ -23,7 +23,7 @@
             </view>
             <view class="fd-favorite {{isFilmFavorite ? 'fd-favorite-active' : ''}}" bindtap="favoriteFilm">收藏</view>
             <block wx:if="{{bookDetail.ShareEBook}}">
-              <view class="fd-shareebook" data-id="{{bookDetail.bookId}}" bindtap="viewebookshare" >电子书</view>
+              <view class="fd-shareebook" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="viewebookshare" >电子书</view>
             </block>
         </view>
         <view class="fd-data">

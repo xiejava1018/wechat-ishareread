@@ -131,6 +131,50 @@ function fetchBookDetail(url, id, cb) {
   })
 }
 
+
+// 获取电子书分享列表
+function fetcheBookShareList(url,cb, fail_cb) {
+  var that = this
+  message.hide.call(that)
+  if (that.data.hasMore) {
+    wx.request({
+      url: url,
+      data: {
+      },
+      method: 'GET',
+      header: {
+        "Content-Type": "application/json,application/json"
+      },
+      success: function (res) {
+        if (res.data.shareEbooks.length === 0) {
+          that.setData({
+            hasMore: false
+          })
+        } else {
+          that.setData({
+            booklist: res.data.shareEbooks,
+            showLoading: false
+          })
+        }
+        wx.stopPullDownRefresh()
+        typeof cb == 'function' && cb(res.data)
+      },
+      fail: function () {
+        that.setData({
+          showLoading: false
+        })
+        message.show.call(that, {
+          content: '网络开小差了',
+          icon: 'offline',
+          duration: 3000
+        })
+        wx.stopPullDownRefresh()
+        typeof fail_cb == 'function' && fail_cb()
+      }
+    })
+  }
+}
+
 // 获取人物详情
 function fetchPersonDetail(url, id, cb) {
   var that = this;
@@ -218,6 +262,7 @@ module.exports = {
   fetchBookClass: fetchBookClass,
   fetchBookList: fetchBookList,
   fetchBookDetail: fetchBookDetail,
+  fetcheBookShareList: fetcheBookShareList,
   fetchPersonDetail: fetchPersonDetail,
   search: search
 }

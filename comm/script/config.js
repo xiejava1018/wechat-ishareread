@@ -19,6 +19,7 @@ module.exports = {
     apiList: {
         bookclasslist: 'https://api.ishareread.com/ishareread/bookclass/parentclass',
         booklist: 'https://api.ishareread.com/ishareread/wxapi/book/booklist/',
+        ebookSharelist:'https://api.ishareread.com/ishareread/wxapi/book/shareEbooks/',
         top: 'https://api.douban.com/v2/movie/top250',
         search: {
             byKeyword: 'https://api.douban.com/v2/movie/search?q=', 

@@ -1,4 +1,7 @@
  <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+     <block wx:if="{{showLoading}}">
+        <view class="loading">{{loadingMsg}}</view>
+    </block>
   <view class="page__bd">
     <form bindsubmit="bindFormSubmit">
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{showTipsMsg}}</view>
@@ -28,7 +31,7 @@
       </view>
 
     <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" form-type="submit">确定</button>
+        <button class="weui-btn" type="primary" form-type="submit" disabled="{{btnDisable}}">确定</button>
     </view>
    </form>
   </view>

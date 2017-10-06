@@ -175,6 +175,64 @@ function fetcheBookShareList(url,cb, fail_cb) {
   }
 }
 
+//通过电子邮件推送书籍
+function sendEbookMail(url, receiver, shareId, cb, fail_cb, complete_cb) {
+  var that = this;
+  console.log(receiver);
+  message.hide.call(that)
+  if (that.data.hasMore) {
+    wx.request({
+      url: url,
+      data: {
+        receiver: receiver,
+        shareId: shareId
+      },
+      method: 'GET',
+      header: {
+        "Content-Type": "application/json,application/json"
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.data === true) {
+          that.setData({
+            showTopTips:true,
+            showTipsMsg:'邮件推送成功！'
+          })
+        } else {
+          that.setData({
+            showTopTips: true,
+            showTipsMsg: '邮件推送失败！'
+          })
+        }
+        setTimeout(function () {
+          that.setData({
+            showTopTips: false
+          });
+        }, 3000);
+        typeof cb == 'function' && cb(res.data)
+      },
+      fail: function () {
+        that.setData({
+          showLoading: false
+        })
+        message.show.call(that, {
+          content: '网络开小差了',
+          icon: 'offline',
+          duration: 3000
+        })
+        typeof fail_cb == 'function' && fail_cb()
+      },
+      complete: function () {
+        that.setData({
+          showLoading: false,
+          btnDisable: false
+        })
+        typeof complete_cb == 'function' && complete_cb()
+      }
+    })
+  }
+}
+
 // 获取人物详情
 function fetchPersonDetail(url, id, cb) {
   var that = this;
@@ -264,5 +322,6 @@ module.exports = {
   fetchBookDetail: fetchBookDetail,
   fetcheBookShareList: fetcheBookShareList,
   fetchPersonDetail: fetchPersonDetail,
+  sendEbookMail: sendEbookMail,
   search: search
 }

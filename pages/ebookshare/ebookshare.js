@@ -5,6 +5,8 @@ Page({
   data: {
     hasMore: true,
     showLoading: true,
+    loadingMsg:"玩命加载中…",
+    btnDisable:false,
     showTopTips: false,
     showTipsMsg:"",
     selectShareId:"",
@@ -39,24 +41,33 @@ Page({
     var tipMsg="";
     var showTopTips=true;
     console.log(that.data);
-  
-    if (that.data.selectShareId=="")
+   
+    if (that.data.selectShareId==="")
     {
       tipMsg = "请选择需要推送的电子书";
+      that.setData({
+        showTopTips: showTopTips,
+        showTipsMsg: tipMsg
+      });
     }
-    else if (e.detail.value.mail=="")
+    else if (e.detail.value.mail==="")
     {
       tipMsg="请输入邮箱";
+      that.setData({
+        showTopTips: showTopTips,
+        showTipsMsg: tipMsg
+      });
     }
     else
     {
-      showTopTips=false;
+      that.setData({
+        btnDisable: true,
+        showTopTips:false
+      });
+      var url = config.apiList.sendebookmail;
       //邮箱推送
+      isharereadfetch.sendEbookMail.call(that, url,e.detail.value.mail, that.data.selectShareId);
     }
-    this.setData({
-      showTopTips: showTopTips,
-      showTipsMsg:tipMsg
-    });
     setTimeout(function () {
       that.setData({
         showTopTips: false

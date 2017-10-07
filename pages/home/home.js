@@ -1,5 +1,5 @@
 const isharereadAPIUrl = require('../../config').isharereadUrl
-var isharereadfetch = require('../../comm/script/fetch')
+var isharereadservice = require('../../comm/script/service')
 var config = require('../../comm/script/config')
 Page({
   data: {
@@ -110,7 +110,7 @@ Page({
     var url = config.apiList.booklist + defclass;
     var selectedclass = this.data.bookclassArray[defclass].bookClassName;
     //取得默认目录下的书籍信息
-    isharereadfetch.fetchBookList.call(that, url, selectedclass, 1, 5);
+    isharereadservice.fetchBookList.call(that, url, selectedclass, 1, 5);
   },
   viewSearch: function () {
     console.log('gotosearch...');

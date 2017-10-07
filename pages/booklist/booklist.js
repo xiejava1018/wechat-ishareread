@@ -1,5 +1,5 @@
 var message = require('../../component/message/message')
-var isharereadfetch = require('../../comm/script/fetch')
+var isharereadservice = require('../../comm/script/service')
 var config = require('../../comm/script/config')
 Page({
   data:{
@@ -28,7 +28,7 @@ Page({
       title: bookClassName
     })
     //取得目录下的书籍信息
-    isharereadfetch.fetchBookList.call(that, url, bookClassName, that.data.curPage, that.data.pageSize)
+    isharereadservice.fetchBookList.call(that, url, bookClassName, that.data.curPage, that.data.pageSize)
   },
   onPullDownRefresh: function (options)
   {
@@ -40,7 +40,7 @@ Page({
     var url = config.apiList.booklist + that.data.bookClassId;
     console.log(url);
     if (!that.data.showLoading) {
-      isharereadfetch.fetchBookList.call(that, url, that.data.bookClassName, that.data.curPage, that.data.pageSize)
+      isharereadservice.fetchBookList.call(that, url, that.data.bookClassName, that.data.curPage, that.data.pageSize)
     }
   }
 });

@@ -7,14 +7,13 @@ Page({
       { enName: 'history', zhName: '浏览记录' },
       { enName: 'shake', zhName: '摇一摇' },
       { enName: 'gallery', zhName: '相册' },
-      { enName: 'setting', zhName: '设置' }
+      { enName: 'setting', zhName: '设置' },
+      { enName: 'login', zhName: '登录' }
     ],
     skin: ''
   },
   onLoad: function (cb) {
     var that = this;
-    console.log(app.globalData);
-    console.log(app.globalData.userInfo)
     // 检测是否存在用户信息
     if (app.globalData.userInfo != null) {
       that.setData({

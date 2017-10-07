@@ -1,5 +1,5 @@
 var message = require('../../component/message/message')
-var isharereadfetch = require('../../comm/script/fetch')
+var isharereadservice = require('../../comm/script/service')
 var config = require('../../comm/script/config')
 Page({
   data: {
@@ -18,7 +18,7 @@ Page({
     console.log(options);
     var url = config.apiList.ebookSharelist + options.bookid;
     //取得目录下的书籍信息
-    isharereadfetch.fetcheBookShareList.call(that, url)
+    isharereadservice.fetcheBookShareList.call(that, url)
     that.setData({
       bookName: options.bookname
     })
@@ -66,7 +66,7 @@ Page({
       });
       var url = config.apiList.sendebookmail;
       //邮箱推送
-      isharereadfetch.sendEbookMail.call(that, url,e.detail.value.mail, that.data.selectShareId);
+      isharereadservice.sendEbookMail.call(that, url,e.detail.value.mail, that.data.selectShareId);
     }
     setTimeout(function () {
       that.setData({

@@ -21,6 +21,8 @@ module.exports = {
         booklist: 'https://api.ishareread.com/ishareread/wxapi/book/booklist/',
         ebookSharelist:'https://api.ishareread.com/ishareread/wxapi/book/shareEbooks/',
         sendebookmail:'https://api.ishareread.com/ishareread/wxapi/book/sendebookmail',
+        getopenid:'https://api.ishareread.com/ishareread/wxapi/user/getwxlogininfo',
+        tologin:'https://api.ishareread.com/ishareread/wxapi/user/tologin',
         top: 'https://api.douban.com/v2/movie/top250',
         search: {
             byKeyword: 'https://api.douban.com/v2/movie/search?q=', 

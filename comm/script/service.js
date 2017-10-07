@@ -64,6 +64,7 @@ function fetchBookList(url, selectedclass,curPage, pageSize, cb, fail_cb) {
         "Content-Type": "application/json,application/json"
       },
       success: function(res){
+        console.log(res.data);
         if (res.data.body.booklist.length === 0){
           that.setData({
             hasMore: false,
@@ -316,6 +317,57 @@ function search(url, keyword, start, count, cb){
     })
   }
 }
+
+// 用户登录
+function logiontoishare(url, username,password,cb) {
+  var that = this;
+  message.hide.call(that)
+  wx.request({
+    url: url + id,
+    method: 'GET',
+    header: {
+      "Content-Type": "application/json,application/json"
+    },
+    success: function (res) {
+      console.log(res);
+      if (res.data === true) {
+        that.setData({
+          showTopTips: true,
+          showTipsMsg: '登录成功！'
+        })
+      } else {
+        that.setData({
+          showTopTips: true,
+          showTipsMsg: '登录失败！'
+        })
+      }
+      setTimeout(function () {
+        that.setData({
+          showTopTips: false
+        });
+      }, 3000);
+      typeof cb == 'function' && cb(res.data)
+    },
+    fail: function () {
+      that.setData({
+        showLoading: false
+      })
+      message.show.call(that, {
+        content: '网络开小差了',
+        icon: 'offline',
+        duration: 3000
+      })
+    },
+    complete: function () {
+      that.setData({
+        showLoading: false,
+        btnDisable: false
+      })
+      typeof complete_cb == 'function' && complete_cb()
+    }
+  })
+}
+
 module.exports = {
   fetchBookClass: fetchBookClass,
   fetchBookList: fetchBookList,

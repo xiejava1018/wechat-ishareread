@@ -1,5 +1,5 @@
 var message = require('../../component/message/message')
-var isharereadfetch = require('../../comm/script/fetch')
+var isharereadservice = require('../../comm/script/service')
 var config = require('../../comm/script/config')
 Page({
   data:{

@@ -1,4 +1,4 @@
-var isharereadfetch = require('../../comm/script/fetch')
+var isharereadservice = require('../../comm/script/service')
 var util = require('../../util/util')
 var config = require('../../comm/script/config')
 Page({
@@ -11,7 +11,7 @@ Page({
     var that = this;
     var id = options.id;
     console.log("bookdoubanId="+id);
-    isharereadfetch.fetchBookDetail.call(that, config.apiList.bookDetail, id, function (data) {
+    isharereadservice.fetchBookDetail.call(that, config.apiList.bookDetail, id, function (data) {
       console.log(data);
       /*
       /// 判断是否收藏

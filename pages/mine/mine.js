@@ -25,7 +25,7 @@ Page({
     typeof cb == 'function' && cb()
   },
   onShow: function () {
-    var that = this
+    var that = this;
     wx.getStorage({
       key: 'skin',
       success: function (res) {

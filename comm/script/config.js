@@ -25,7 +25,7 @@ module.exports = {
         tologin:'https://api.ishareread.com/ishareread/wxapi/user/tologin',
         top: 'https://api.douban.com/v2/movie/top250',
         search: {
-            byKeyword: 'https://api.douban.com/v2/movie/search?q=', 
+            byKeyword: 'https://api.ishareread.com/ishareread/wxapi/book/searchbook', 
             byTag: 'https://api.douban.com/v2/movie/search?tag='
         },
         filmDetail: 'https://api.ishareread.com/douban/movie/subject/',

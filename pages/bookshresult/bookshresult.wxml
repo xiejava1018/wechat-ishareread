@@ -1,25 +1,9 @@
-
-
 <block wx:if="{{showLoading}}">
     <view class="loading">玩命加载中…</view>
 </block>
-<block wx:if="{{! showLoading}}">
-<view class="search-bar">
-    <input class="search-txt" placeholder-class="search-txt-plc" bindfocus="viewSearch" placeholder="请输入关键词搜索" type="text"/>
-</view>
-<swiper class="banner" indicator-dots="true" autoplay="true">
-    <block wx:for="{{bannerList}}" wx:for-item="bannerItem" wx:for-index="bannerIndex" wx:key="banner">
-        <swiper-item data-type="{{bannerItem.type}}" data-id="{{bannerItem.id}}" bindtap="viewBannerDetail">
-            <image src="{{bannerItem.imgUrl}}" class="banner-item"></image>
-        </swiper-item>
-    </block>
-</swiper>
-
-
 <view class="view-sort">
     <view class="result">
          <view class="weui-panel weui-panel_access">
-            <view class="weui-panel__hd">{{selectedclass}}</view>
             <view class="weui-panel__bd" data-sort-index="{{index}}" wx:for="{{booklist}}" wx:key="bookId">
                 <navigator url="../bookdetail/bookdetail?id={{item.bookDoubanId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
@@ -34,6 +18,5 @@
         </view>
     </view>
 </view>
-</block>
 <import src="../../component/message/message.wxml"/>
 <template is="message" data="{{message: message}}"/>

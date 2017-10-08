@@ -271,38 +271,33 @@ function fetchPersonDetail(url, id, cb) {
 }
 
 // 搜索（关键词或者类型）
-function search(url, keyword, start, count, cb){
+function search(url, keyword, cb){
   var that = this
   message.hide.call(that)
   var url = decodeURIComponent(url)
   if (that.data.hasMore) {
     wx.request({
-      url: url + keyword,
+      url: url,
       data: {
-        start: start,
-        count: count
+        q: keyword
       },
       method: 'GET',
       header: {
         "Content-Type": "application/json,application/json"
       },
       success: function(res){
-        if(res.data.subjects.length === 0){
+        console.log(res.data);
+        if (res.data.body.booklist=== null||res.data.body.booklist.length === 0){
           that.setData({
             hasMore: false,
             showLoading: false
           })
         }else{
           that.setData({
-            films: that.data.films.concat(res.data.subjects),
-            start: that.data.start + res.data.subjects.length,
+            booklist: res.data.body.booklist,
             showLoading: false
           })
-          wx.setNavigationBarTitle({
-              title: keyword
-          })
         }
-        wx.stopPullDownRefresh()
         typeof cb == 'function' && cb(res.data)
       },
       fail: function() {
@@ -314,6 +309,12 @@ function search(url, keyword, start, count, cb){
           icon: 'offline',
           duration: 3000
         })
+      },
+      complete: function () {
+        that.setData({
+          showLoading: false
+        })
+        typeof complete_cb == 'function' && complete_cb()
       }
     })
   }

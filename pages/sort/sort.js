@@ -136,5 +136,13 @@ Page({
     wx.navigateTo({
       url: '../booklist/booklist?bookClassId='+bookClassId+'&bookClassName='+selectedclass
     })
-  }
+  },
+  search: function (e) {
+    var that = this;
+    var keyword = e.detail.value.keyword;
+    //跳转到书籍列表页面
+    wx.navigateTo({
+      url: '../bookshresult/bookshresult?keyword=' + keyword
+    })
+  },
 });

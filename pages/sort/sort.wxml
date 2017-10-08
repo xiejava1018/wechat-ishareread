@@ -1,7 +1,7 @@
 <view class="search-hd">
     <view class="search-area">
         <form bindsubmit="search">
-            <view class="search-type" bindtap="changeSearchType">书名</view>
+            <view class="search-type" >书名</view>
             <input class="search-txt" name="keyword" placeholder="请输入书名或作者"/>
             <button class="search-btn" formType="submit">搜索</button>
         </form>

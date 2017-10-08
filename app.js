@@ -24,6 +24,7 @@ App({
           },
           success: function (res) {
             that.globalData.openid=res.data.openid;
+            that.globalData.ishareuserid=res.data.ishareuserid;
             typeof cb == 'function' && cb(res.data)
           },
           fail: function () {
@@ -49,6 +50,7 @@ App({
 
   globalData: {
     userInfo: null,
-    openid:null
+    openid:null,
+    ishareuserid:null
   }
 })

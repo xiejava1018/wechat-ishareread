@@ -1,6 +1,7 @@
 var message = require('../../component/message/message')
 var isharereadservice = require('../../comm/script/service')
 var config = require('../../comm/script/config')
+var app = getApp();
 Page({
   data: {
     hasMore: true,
@@ -14,14 +15,23 @@ Page({
     booklist: []
   },
   onLoad: function (options) {
+   
     var that = this;
-    console.log(options);
     var url = config.apiList.ebookSharelist + options.bookid;
     //取得目录下的书籍信息
     isharereadservice.fetcheBookShareList.call(that, url)
     that.setData({
       bookName: options.bookname
     })
+
+    var ishareuserid = app.globalData.ishareuserid;
+    if (ishareuserid === "") {
+      //登陆
+      wx.navigateTo({
+        url: '../login/login'
+      })
+    }
+
   },
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
@@ -65,8 +75,23 @@ Page({
         showTopTips:false
       });
       var url = config.apiList.sendebookmail;
-      //邮箱推送
-      isharereadservice.sendEbookMail.call(that, url,e.detail.value.mail, that.data.selectShareId);
+      var ishareuserid = app.globalData.ishareuserid;
+      console.log("ishareuserid="+ishareuserid);
+      if (ishareuserid==="")
+      {
+        that.setData({
+          btnDisable: false
+        });
+        //登陆
+        wx.navigateTo({
+          url: '../login/login'
+        })
+      }
+      else
+      {
+        //邮箱推送
+        isharereadservice.sendEbookMail.call(that,url,ishareuserid,e.detail.value.mail, that.data.selectShareId);
+      }
     }
     setTimeout(function () {
       that.setData({

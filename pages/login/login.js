@@ -31,7 +31,6 @@ Page({
     var tipMsg = "";
     var showTopTips = true;
     var formData=e.detail.value;
-    console.log(formData);
     if (e.detail.value.username === "") {
       tipMsg = "请输入登录名/邮箱";
       that.setData({
@@ -69,8 +68,15 @@ Page({
               showTopTips: true,
               showTipsMsg: '登录成功！'
             });
+            app.globalData.openid=res.data.body.user.wxOpenid;
+            app.globalData.ishareuserid = res.data.body.user.id;
+            /*
             wx.switchTab({
               url: '../mine/mine'
+            })
+            */
+            wx.navigateBack({
+              delta: 1
             })
           } else {
             that.setData({

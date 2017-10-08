@@ -177,7 +177,7 @@ function fetcheBookShareList(url,cb, fail_cb) {
 }
 
 //通过电子邮件推送书籍
-function sendEbookMail(url, receiver, shareId, cb, fail_cb, complete_cb) {
+function sendEbookMail(url, ishareuserid,receiver, shareId, cb, fail_cb, complete_cb) {
   var that = this;
   console.log(receiver);
   message.hide.call(that)
@@ -185,6 +185,7 @@ function sendEbookMail(url, receiver, shareId, cb, fail_cb, complete_cb) {
     wx.request({
       url: url,
       data: {
+        ishareuserid: ishareuserid,
         receiver: receiver,
         shareId: shareId
       },

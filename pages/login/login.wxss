@@ -1,0 +1,6 @@
+.nav-right {
+    float: right;
+    font-size:14px;
+    color:#586c94;
+    margin:0 .95em;
+}

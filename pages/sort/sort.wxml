@@ -1,3 +1,4 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
 <view class="search-hd">
     <view class="search-area">
         <form bindsubmit="search">
@@ -12,6 +13,12 @@
         <view class="search-keyword-title">热门标签</view>
         <view wx:for="{{hotTag}}" wx:for-item="hotTagItem" wx:key="hotTagItem" class="search-keyword-item" data-keyword="{{hotTagItem}}" bindtap="searchByTag">{{hotTagItem}}</view>        
     </view>
+ 
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="scanCode">扫一扫</button>
+      </view>
+ 
 </view>
 <import src="../../component/message/message.wxml"/>
 <template is="message" data="{{message: message}}"/>
+</view>

@@ -5,29 +5,40 @@ Page({
   data: {
     bookDetail: {},
     showLoading: true,
-    showContent: false
+    showContent: false,
+    isBookFavorite:false
   },
   onLoad: function (options) {
     var that = this;
+    console.log(options);
+    var qtype=options.qtype;
+    var url="";
+    if(qtype==="id")
+    {
+      url = config.apiList.bookDetailbyId;
+    }
+    else if(qtype==="isbn")
+    {
+      url = config.apiList.bookDetailbyISBN;
+    }
     var id = options.id;
-    console.log("bookdoubanId="+id);
-    isharereadservice.fetchBookDetail.call(that, config.apiList.bookDetail, id, function (data) {
+    isharereadservice.fetchBookDetail.call(that, url, id, function (data) {
       console.log(data);
-      /*
+      
       /// 判断是否收藏
       wx.getStorage({
-        key: 'film_favorite',
+        key: 'book_favorite',
         success: function (res) {
           for (var i = 0; i < res.data.length; i++) {
             if (res.data[i].id == data.id) {
               that.setData({
-                isFilmFavorite: true
+                isBookFavorite: true
               })
             }
           }
         }
       })
-      */
+
       /*
       // 存储浏览历史
       var date = util.getDate()
@@ -114,26 +125,29 @@ Page({
     }
     this.onLoad(data)
   },
-  favoriteFilm: function () {
-    var that = this
+  favoriteBook: function () {
+    var that = this;
     // 判断原来是否收藏，是则删除，否则添加
     wx.getStorage({
-      key: 'film_favorite',
+      key: 'book_favorite',
       success: function (res) {
-        var film_favorite = res.data
-        if (that.data.isFilmFavorite) {
+        console.log('getStorage sucess');
+        console.log(res.data);
+        var book_favorite = res.data
+        console.log(that.data.isBookFavorite);
+        if (that.data.isBookFavorite) {
           // 删除
-          for (var i = 0; i < film_favorite.length; i++) {
-            if (film_favorite[i].id == that.data.filmDetail.id) {
-              film_favorite.splice(i, 1)
+          for (var i = 0; i < book_favorite.length; i++) {
+            if (book_favorite[i].id == that.data.bookDetail.id) {
+              book_favorite.splice(i, 1)
               that.setData({
-                isFilmFavorite: false
+                isBookFavorite: false
               })
             }
           }
           wx.setStorage({
-            key: 'film_favorite',
-            data: film_favorite,
+            key: 'book_favorite',
+            data: book_favorite,
             success: function (res) {
               console.log(res)
               console.log('----设置成功----')
@@ -141,17 +155,33 @@ Page({
           })
         } else {
           // 添加
-          film_favorite.push(that.data.filmDetail)
+          book_favorite.push(that.data.bookDetail)
           wx.setStorage({
-            key: 'film_favorite',
-            data: film_favorite,
+            key: 'book_favorite',
+            data: book_favorite,
             success: function (res) {
               that.setData({
-                isFilmFavorite: true
+                isBookFavorite: true
               })
             }
           })
         }
+      },
+      fail: function (res) {
+        console.log(res);
+        var book_favorite =[];
+        book_favorite.push(that.data.bookDetail);
+        wx.setStorage({
+          key: 'book_favorite',
+          data: book_favorite,
+          success: function (res) {
+            console.log(res)
+            console.log('----设置成功----')
+            that.setData({
+              isBookFavorite: true
+            })
+          }
+        })
       }
     })
   }

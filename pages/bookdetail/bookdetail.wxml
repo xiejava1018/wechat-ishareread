@@ -21,23 +21,23 @@
                 </view>
                 <view class="fd-intro-txt">出版日期：{{bookDetail.pubdate}}</view>
             </view>
-            <view class="fd-favorite {{isFilmFavorite ? 'fd-favorite-active' : ''}}" bindtap="favoriteFilm">收藏</view>
+            <view class="fd-favorite {{isBookFavorite ? 'fd-favorite-active' : ''}}" bindtap="favoriteBook">收藏</view>
             <block wx:if="{{bookDetail.ShareEBook}}">
               <view class="fd-shareebook" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="viewebookshare" >电子书</view>
             </block>
         </view>
         <view class="fd-data">
             <view class="fd-data-item">
-                <view class="fd-data-num">{{filmDetail.collect_count}}</view>
-                <view class="fd-data-title">看过</view>
+                <view class="fd-data-num">{{bookDetail.HaveReadCount}}</view>
+                <view class="fd-data-title">读过</view>
             </view>
             <view class="fd-data-item">
-                <view class="fd-data-num">{{filmDetail.wish_count}}</view>
-                <view class="fd-data-title">想看</view>
+                <view class="fd-data-num">{{bookDetail.WantReadCount}}</view>
+                <view class="fd-data-title">想读</view>
             </view>
             <view class="fd-data-item">
-                <view class="fd-data-num">{{filmDetail.ratings_count}}</view>
-                <view class="fd-data-title">评分人数</view>
+                <view class="fd-data-num">{{bookDetail.ShareBookCount}}</view>
+                <view class="fd-data-title">分享</view>
             </view>
         </view>
         <view class="fd-bd">
@@ -45,11 +45,11 @@
             <view class="fd-bd-intro">{{bookDetail.summary}}</view>
             <view class="fd-bd-title">作者简介</view>
             <view class="fd-bd-intro">{{bookDetail.author_intro}}</view>
-            <view class="fd-bd-title">标签</view>
+            <view class="fd-bd-title">分享该书的书友</view>
             <view class="fd-bd-tag">
-                <block wx:for="{{bookDetail.tags}}" wx:for-item="bookDetailTagItem" wx:key="bookDetailTagItem">
-                    <view class="fd-bd-tag-item" data-tag="{{bookDetailTagItem.title}}" catchtap="viewFilmByTag">{{bookDetailTagItem.title}}</view>
-                </block>
+            </view>
+            <view class="fd-bd-title">同类好书</view>
+            <view class="fd-bd-tag">
             </view>
         </view>
     </block> 

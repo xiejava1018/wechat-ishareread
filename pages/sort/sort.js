@@ -14,7 +14,7 @@ Page({
         "bookClassDesc": "",
         "bookParentClassName": "",
         "bookParentClassId": 0,
-        "bookClassName": "小说作品",
+        "bookClassName": "传统文学",
         "subBookClass": []
       },
       {
@@ -117,12 +117,10 @@ Page({
       })
       return false
     } else {
-      /*
-      var searchUrl = that.data.searchType == 'keyword' ? config.apiList.search.byKeyword : config.apiList.search.byTag
-      wx.redirectTo({
-        url: '../searchResult/searchResult?url=' + encodeURIComponent(searchUrl) + '&keyword=' + keyword
+      //跳转到书籍列表页面
+      wx.navigateTo({
+        url: '../bookshresult/bookshresult?keyword=' + keyword
       })
-      */
     }
   },
   searchByBookClass:function (e)
@@ -137,12 +135,17 @@ Page({
       url: '../booklist/booklist?bookClassId='+bookClassId+'&bookClassName='+selectedclass
     })
   },
-  search: function (e) {
-    var that = this;
-    var keyword = e.detail.value.keyword;
-    //跳转到书籍列表页面
-    wx.navigateTo({
-      url: '../bookshresult/bookshresult?keyword=' + keyword
+  scanCode: function () {
+    var that = this
+    wx.scanCode({
+      success: function (res) {
+        //根据书籍的isbn查询跳转到书籍详情页面
+        wx.navigateTo({
+          url: '../bookdetail/bookdetail?qtype=isbn&id='+res.result
+        })
+      },
+      fail: function (res) {
+      }
     })
-  },
+  }
 });

@@ -23,6 +23,7 @@ module.exports = {
         sendebookmail:'https://api.ishareread.com/ishareread/wxapi/book/sendebookmail',
         getopenid:'https://api.ishareread.com/ishareread/wxapi/user/getwxlogininfo',
         tologin:'https://api.ishareread.com/ishareread/wxapi/user/tologin',
+        touserRegist:'https://api.ishareread.com/ishareread/wxapi/user/userRegist.do',
         top: 'https://api.douban.com/v2/movie/top250',
         search: {
             byKeyword: 'https://api.ishareread.com/ishareread/wxapi/book/searchbook', 

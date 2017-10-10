@@ -10,7 +10,8 @@
     "pages/ebookshare/ebookshare",
     "pages/login/login",
     "pages/bookshresult/bookshresult",
-    "pages/favorite/favorite"
+    "pages/favorite/favorite",
+    "pages/register/register"
   ],
   "window": {
     "navigationBarTextStyle": "black",

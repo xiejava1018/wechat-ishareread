@@ -42,7 +42,9 @@
   <view class="weui-btn-area">
       <button class="weui-btn" type="primary" form-type="submit" disabled="{{btnDisable}}">确定</button>
   </view>
-  <navigator url="" class="nav-right">注册</navigator>
+  <view class="nav-right">
+    <navigator url="../register/register" >注册</navigator>
+  </view>
   </form>
   
 </view>

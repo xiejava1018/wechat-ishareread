@@ -24,7 +24,7 @@ module.exports = {
         getopenid:'https://api.ishareread.com/ishareread/wxapi/user/getwxlogininfo',
         tologin:'https://api.ishareread.com/ishareread/wxapi/user/tologin',
         touserRegist:'https://api.ishareread.com/ishareread/wxapi/user/userRegist.do',
-        top: 'https://api.douban.com/v2/movie/top250',
+        dosharebook: 'https://api.ishareread.com/ishareread/wxapi/bookshare/sharebook.do',
         search: {
             byKeyword: 'https://api.ishareread.com/ishareread/wxapi/book/searchbook', 
             byTag: 'https://api.douban.com/v2/movie/search?tag='

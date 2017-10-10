@@ -1,12 +1,15 @@
 var isharereadservice = require('../../comm/script/service')
 var util = require('../../util/util')
 var config = require('../../comm/script/config')
+var app = getApp();
 Page({
   data: {
     bookDetail: {},
     showLoading: true,
     showContent: false,
-    isBookFavorite:false
+    isBookFavorite:false,
+    qtype:'',
+    id:''
   },
   onLoad: function (options) {
     var that = this;
@@ -22,6 +25,10 @@ Page({
       url = config.apiList.bookDetailbyISBN;
     }
     var id = options.id;
+    that.setData({
+      id: id,
+      qtype: qtype
+    })
     isharereadservice.fetchBookDetail.call(that, url, id, function (data) {
       console.log(data);
       
@@ -119,12 +126,6 @@ Page({
       url: '../searchResult/searchResult?url=' + encodeURIComponent(config.apiList.search.byTag) + '&keyword=' + keyword
     })
   },
-  onPullDownRefresh: function () {
-    var data = {
-      id: this.data.filmDetail.id
-    }
-    this.onLoad(data)
-  },
   favoriteBook: function () {
     var that = this;
     // 判断原来是否收藏，是则删除，否则添加
@@ -186,11 +187,21 @@ Page({
     })
   },
   shareBook: function (e){
+    var that=this;
     var data = e.currentTarget.dataset;
     var bookid = data.id;
     var bookname = data.name;
-    wx.navigateTo({
-      url: '../sharebook/sharebook?bookid=' + bookid + '& bookname='+bookname
-    })
+    var ishareuserid = app.globalData.ishareuserid;
+    if (ishareuserid === "") {
+      //登陆
+      wx.navigateTo({
+        url: '../login/login'
+      })
+    }
+    else{
+      wx.redirectTo({
+        url: '../sharebook/sharebook?bookid=' + bookid + '&bookname='+bookname+'&qtype='+that.data.qtype+'&id='+that.data.id
+      })
+    }
   }
 })

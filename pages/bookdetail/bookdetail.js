@@ -108,7 +108,7 @@ Page({
     var data = e.currentTarget.dataset;
     var bookid=data.id;
     var bookname=data.name;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../ebookshare/ebookshare?bookid=' + bookid+'&bookname='+bookname
     })
   },
@@ -183,6 +183,14 @@ Page({
           }
         })
       }
+    })
+  },
+  shareBook: function (e){
+    var data = e.currentTarget.dataset;
+    var bookid = data.id;
+    var bookname = data.name;
+    wx.navigateTo({
+      url: '../sharebook/sharebook?bookid=' + bookid + '& bookname='+bookname
     })
   }
 })

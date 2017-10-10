@@ -37,7 +37,7 @@
             </view>
             <view class="fd-data-item">
                 <view class="fd-data-num">{{bookDetail.ShareBookCount}}</view>
-                <view class="fd-data-title">分享</view>
+                <view class="fd-data-title" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="shareBook">分享</view>
             </view>
         </view>
         <view class="fd-bd">

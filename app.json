@@ -11,7 +11,8 @@
     "pages/login/login",
     "pages/bookshresult/bookshresult",
     "pages/favorite/favorite",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/sharebook/sharebook"
   ],
   "window": {
     "navigationBarTextStyle": "black",

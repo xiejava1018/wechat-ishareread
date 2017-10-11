@@ -203,5 +203,14 @@ Page({
         url: '../sharebook/sharebook?bookid=' + bookid + '&bookname='+bookname+'&qtype='+that.data.qtype+'&id='+that.data.id
       })
     }
+  },
+  shareBooklist: function (e) {
+    var that = this;
+    var data = e.currentTarget.dataset;
+    var bookid = data.id;
+    var bookname = data.name;
+    wx.redirectTo({
+      url: '../sharelist/sharelist?bookid=' + bookid + '&bookname=' + bookname
+    })
   }
 })

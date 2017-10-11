@@ -31,7 +31,7 @@
       </view>
 
     <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" form-type="submit" disabled="{{btnDisable}}">确定</button>
+        <button class="weui-btn" type="primary" form-type="submit" disabled="{{btnDisable}}" loading="{{btnLoading}}">确定</button>
     </view>
    </form>
   </view>

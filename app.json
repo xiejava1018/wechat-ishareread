@@ -12,7 +12,9 @@
     "pages/bookshresult/bookshresult",
     "pages/favorite/favorite",
     "pages/register/register",
-    "pages/sharebook/sharebook"
+    "pages/sharebook/sharebook",
+    "pages/sharelist/sharelist",
+    "pages/sendmsg/sendmsg"
   ],
   "window": {
     "navigationBarTextStyle": "black",

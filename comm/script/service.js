@@ -227,7 +227,8 @@ function sendEbookMail(url, ishareuserid,receiver, shareId, cb, fail_cb, complet
       complete: function () {
         that.setData({
           showLoading: false,
-          btnDisable: false
+          btnDisable: false,
+          btnLoading: false
         })
         typeof complete_cb == 'function' && complete_cb()
       }

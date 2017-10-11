@@ -1,0 +1,21 @@
+<view class="page">
+  <view class="page__bd">
+  <block wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中…</view>
+  </block>
+  <block wx:else>
+    <view class="weui-cells__title">《{{bookName}}》的分享列表</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view data-sort-index="{{index}}" wx:for="{{cansharelist}}" wx:key="bookhaveid">
+        <navigator url="../sendmsg/sendmsg?bookhaveId={{item.bookhaveid}}&username={{item.username}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image src="{{item.userimage}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd">{{item.username}}  分享方式：{{item.sharetype}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">留言</view>
+        </navigator>
+        </view>
+    </view>
+  </block>
+  </view>
+</view>

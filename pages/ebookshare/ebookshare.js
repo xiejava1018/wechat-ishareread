@@ -8,6 +8,7 @@ Page({
     showLoading: true,
     loadingMsg:"玩命加载中…",
     btnDisable:false,
+    btnLoading:false,
     showTopTips: false,
     showTipsMsg:"",
     selectShareId:"",
@@ -50,8 +51,9 @@ Page({
     var that = this;
     var tipMsg="";
     var showTopTips=true;
-    console.log(that.data);
-   
+    var url = config.apiList.sendebookmail;
+    var ishareuserid = app.globalData.ishareuserid;
+    console.log("ishareuserid=" + ishareuserid);
     if (that.data.selectShareId==="")
     {
       tipMsg = "请选择需要推送的电子书";
@@ -59,6 +61,11 @@ Page({
         showTopTips: showTopTips,
         showTipsMsg: tipMsg
       });
+      setTimeout(function () {
+        that.setData({
+          showTopTips: false
+        });
+      }, 3000);
     }
     else if (e.detail.value.mail==="")
     {
@@ -67,36 +74,27 @@ Page({
         showTopTips: showTopTips,
         showTipsMsg: tipMsg
       });
+      setTimeout(function () {
+        that.setData({
+          showTopTips: false
+        });
+      }, 3000);
+    }
+    else if (ishareuserid === "") {
+      //登陆
+      wx.navigateTo({
+        url: '../login/login'
+      })
     }
     else
     {
       that.setData({
         btnDisable: true,
-        showTopTips:false
+        showTopTips:false,
+        btnLoading: true
       });
-      var url = config.apiList.sendebookmail;
-      var ishareuserid = app.globalData.ishareuserid;
-      console.log("ishareuserid="+ishareuserid);
-      if (ishareuserid==="")
-      {
-        that.setData({
-          btnDisable: false
-        });
-        //登陆
-        wx.navigateTo({
-          url: '../login/login'
-        })
-      }
-      else
-      {
-        //邮箱推送
-        isharereadservice.sendEbookMail.call(that,url,ishareuserid,e.detail.value.mail, that.data.selectShareId);
-      }
+      //邮箱推送
+      isharereadservice.sendEbookMail.call(that,url,ishareuserid,e.detail.value.mail, that.data.selectShareId);
     }
-    setTimeout(function () {
-      that.setData({
-        showTopTips: false
-      });
-    }, 3000);
   }
 });

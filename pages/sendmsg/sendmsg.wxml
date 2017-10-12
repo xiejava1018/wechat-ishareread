@@ -1,17 +1,40 @@
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
   <view class="page__bd">
+  <block wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中…</view>
+  </block>
+  <block wx:else>
+      <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{showTipsMsg}}</view>
+      <view class="weui-panel">
+        <view class="weui-panel__hd">{{username}}分享了《{{userShare.bookName}}》</view>
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text">
+                <view class="weui-media-box__title weui-media-box__title_in-text">分享方式：{{userShare.shareType}}</view>
+                <view class="weui-media-box__desc">分享留言：{{userShare.shareRemark}}</view>
+                <view class="weui-media-box__info">
+                    <view class="weui-media-box__info__meta"></view>
+                    <view class="weui-media-box__info__meta">{{userShareDate}}</view>
+                    <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">位置</view>
+                </view>
+            </view>
+        </view>
+       </view>
+       <form bindsubmit="bindFormSubmit">
        <view class="weui-cells__title">给{{username}}留言</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入留言" style="height: 3.3em" />
+                    <textarea class="weui-textarea" placeholder="请输入留言" style="height: 3.3em" name="borrowmsg"/>
                     <view class="weui-textarea-counter">0/200</view>
                 </view>
             </view>
         </view>
-
+        <input hidden name="bookhaveId" value="{{bookhaveId}}"/>
+        <input hidden name="messagerId" value="{{ishareuserid}}"/>
         <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+            <button class="weui-btn" type="primary" form-type="submit" disabled="{{btnDisable}}" loading="{{btnLoading}}">确定</button>
         </view>
+       </form>
+    </block>
     </view>
 </view>

@@ -1,6 +1,7 @@
 var message = require('../../component/message/message')
 var isharereadservice = require('../../comm/script/service')
 var config = require('../../comm/script/config')
+var app = getApp();
 Page({
   data: {
     hasMore: true,
@@ -53,5 +54,23 @@ Page({
         })
       }
     })
+  },
+  gotoSendMsg:function(e)
+  {
+    var data = e.currentTarget.dataset;
+    var bookhaveid = data.bookhaveid;
+    var username = data.username;
+    var ishareuserid = app.globalData.ishareuserid;
+    if (ishareuserid === "") {
+      //登陆
+      wx.navigateTo({
+        url: '../login/login'
+      })
+    }
+    else{
+      wx.navigateTo({
+        url: '../sendmsg/sendmsg?bookhaveId=' + bookhaveid + '&username=' + username
+      })
+    }
   }
 })

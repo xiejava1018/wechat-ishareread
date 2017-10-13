@@ -1,0 +1,4 @@
+.weui-media-box__info__meta_right {
+  float:right;
+  padding-right:1em;
+}

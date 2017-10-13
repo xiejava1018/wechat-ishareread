@@ -12,6 +12,7 @@ Page({
     ishareuserid:'',
     btnDisable: false,
     btnLoading: false,
+    borrowMsgs:[]
   },
   onLoad: function (options) {
     var that = this;
@@ -48,6 +49,8 @@ Page({
                 userShare: res.data.body.userShare,
                 userShareDate: res.data.body.userShare.haveDate.substring(0, res.data.body.userShare.haveDate.length-2)
               });
+              //
+              getborromsg.call(that,bookhaveId);
             }
           },
           fail: function () {
@@ -142,3 +145,45 @@ Page({
       }
     }
 })
+
+function getborromsg(bookhaveId, cb, fail_cb, complete_cb)
+{
+  var that = this;
+  var url = config.apiList.getBorrowMsg + bookhaveId;
+  wx.request({
+    url: url,
+    data: {
+    },
+    method: 'GET',
+    header: {
+      "Content-Type": "application/json,application/json"
+    },
+    success: function (res) {
+        that.setData({
+          borrowMsgs: res.data.body.borrowMsgList,
+          showLoading: false
+        })
+      typeof cb == 'function' && cb(res.data)
+    },
+    fail: function () {
+      that.setData({
+        showLoading: false
+      })
+      message.show.call(that, {
+        content: '网络开小差了',
+        icon: 'offline',
+        duration: 3000
+      })
+      typeof fail_cb == 'function' && fail_cb()
+    },
+    complete: function () {
+      that.setData({
+        showLoading: false
+      })
+      typeof complete_cb == 'function' && complete_cb()
+    }
+  })
+}
+module.exports = {
+  getborromsg: getborromsg
+}

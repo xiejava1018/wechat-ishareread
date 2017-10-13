@@ -14,7 +14,8 @@
     "pages/register/register",
     "pages/sharebook/sharebook",
     "pages/sharelist/sharelist",
-    "pages/sendmsg/sendmsg"
+    "pages/sendmsg/sendmsg",
+    "pages/msg/msg_success"
   ],
   "window": {
     "navigationBarTextStyle": "black",

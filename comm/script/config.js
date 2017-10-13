@@ -28,6 +28,7 @@ module.exports = {
         getcansharelist:'https://api.ishareread.com/ishareread/wxapi/bookshare/book/',
         getusercanshare:'https://api.ishareread.com/ishareread/wxapi/bookshare/',
         dosendmsg:'https://api.ishareread.com/ishareread/wxapi/bookshare/sendBorrowMsg',
+        getBorrowMsg:'https://api.ishareread.com/ishareread/wxapi/bookshare/borrowMsgList/',
         search: {
             byKeyword: 'https://api.ishareread.com/ishareread/wxapi/book/searchbook', 
             byTag: 'https://api.douban.com/v2/movie/search?tag='

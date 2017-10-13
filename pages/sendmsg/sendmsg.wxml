@@ -18,7 +18,13 @@
                 </view>
             </view>
         </view>
-       </view>
+             <view class="weui-media-box weui-media-box_text" data-sort-index="{{index}}" wx:for="{{borrowMsgs}}" wx:key="msgId">
+                  <view class="weui-media-box__desc">{{item.borrowMsg}}</view>
+                  <view class="weui-media-box__info">
+                      <view class="weui-media-box__info__meta_right">{{item.msgTime}}</view>
+                  </view>
+              </view>
+        </view>
        <form bindsubmit="bindFormSubmit">
        <view class="weui-cells__title">给{{username}}留言</view>
         <view class="weui-cells weui-cells_after-title">

@@ -108,15 +108,29 @@ function fetchBookDetail(url, id, cb) {
       "Content-Type": "application/json,application/json"
     },
     success: function(res){
-      that.setData({
-        bookDetail: res.data,
-        showLoading: false,
-        showContent: true
-      })
-      wx.setNavigationBarTitle({
-          title: res.data.title
-      })
-      wx.stopPullDownRefresh()
+      if(res.data.code===6000)
+      {
+        that.setData({
+          showLoading: false,
+          showContent: false
+        })
+        message.show.call(that, {
+          content: 'Sorry,没有找到该书的信息!',
+          icon: 'offline',
+          duration: 3000
+        })
+      }
+      else
+      {
+        that.setData({
+          bookDetail: res.data,
+          showLoading: false,
+          showContent: true
+        })
+        wx.setNavigationBarTitle({
+            title: res.data.title
+        })
+      }
       typeof cb == 'function' && cb(res.data)
     },
     fail: function() {
@@ -194,24 +208,9 @@ function sendEbookMail(url, ishareuserid,receiver, shareId, cb, fail_cb, complet
         "Content-Type": "application/json,application/json"
       },
       success: function (res) {
-        console.log(res);
-        if (res.data === true) {
-          that.setData({
-            showTopTips:true,
-            showTipsMsg:'邮件推送成功！'
-          })
-        } else {
-          that.setData({
-            showTopTips: true,
-            showTipsMsg: '邮件推送失败！'
-          })
-        }
-        setTimeout(function () {
-          that.setData({
-            showTopTips: false
-          });
-        }, 3000);
-        typeof cb == 'function' && cb(res.data)
+        wx.showToast({
+          title: "推送成功"
+        });
       },
       fail: function () {
         that.setData({

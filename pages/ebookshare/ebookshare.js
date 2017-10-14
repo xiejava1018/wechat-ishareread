@@ -95,9 +95,11 @@ Page({
       });
       //邮箱推送
       isharereadservice.sendEbookMail.call(that, url, ishareuserid, e.detail.value.mail, that.data.selectShareId, function(data){
+        /*
         wx.redirectTo({
           url: '../msg/msg_success'
         })
+        */
       });
     }
   }

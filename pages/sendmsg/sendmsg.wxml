@@ -18,20 +18,22 @@
                 </view>
             </view>
         </view>
+            <scroll-view scroll-y="true" style="height: 420rpx;">
              <view class="weui-media-box weui-media-box_text" data-sort-index="{{index}}" wx:for="{{borrowMsgs}}" wx:key="msgId">
                   <view class="weui-media-box__desc">{{item.borrowMsg}}</view>
                   <view class="weui-media-box__info">
-                      <view class="weui-media-box__info__meta_right">{{item.msgTime}}</view>
+                      <view class="weui-media-box__info__meta_right">{{item.msgerName}} {{item.msgTime}}</view>
                   </view>
               </view>
+            </scroll-view>
         </view>
        <form bindsubmit="bindFormSubmit">
        <view class="weui-cells__title">给{{username}}留言</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入留言" style="height: 3.3em" name="borrowmsg"/>
-                    <view class="weui-textarea-counter">0/200</view>
+                    <textarea class="weui-textarea" placeholder="请输入留言" style="height: 3.3em" name="borrowmsg" bindinput="inputtextarea" maxlength="200"/>
+                    <view class="weui-textarea-counter">{{inputCount}}/200</view>
                 </view>
             </view>
         </view>

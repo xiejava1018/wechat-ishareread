@@ -12,6 +12,7 @@ Page({
     ishareuserid:'',
     btnDisable: false,
     btnLoading: false,
+    inputCount: 0,
     borrowMsgs:[]
   },
   onLoad: function (options) {
@@ -74,6 +75,7 @@ Page({
   bindFormSubmit: function (e) {
     var that = this;
     var formData = e.detail.value;
+    var bookhaveId = formData.bookhaveId;
     var url = config.apiList.dosendmsg;
     //判断是否登录
     if (that.data.ishareuserid === "") {
@@ -84,66 +86,87 @@ Page({
     }
     else
     {
-      that.setData({
-        btnDisable: true,
-        btnLoading: true,
-      });
-      console.log(formData);
-        //留言
-        wx.request({
-          url: url,
-          data: formData,
-          method: 'POST',
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          success: function (res) {
-            console.log(res.data);
-            var result = res.data;
-            if (res.data === 1) {
+        console.log(formData);
+        if (formData.borrowmsg.length<5)
+        {
+          that.setData({
+            showTopTips:true,
+            showTipsMsg:'说点什么吧，至少5个字哦。'
+          });
+        }
+        else{
+        that.setData({
+          btnDisable: true,
+          btnLoading: true,
+        });
+        console.log(formData);
+          //留言
+          wx.request({
+            url: url,
+            data: formData,
+            method: 'POST',
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            success: function (res) {
+              console.log(res.data);
+              var result = res.data;
+              if (res.data === 1) {
+                wx.showToast({
+                  title: "成功"
+                })
+                /*
+                var backurl = '../sendmsg/sendmsg?bookhaveId=' + that.data.bookhaveId + '&username=' + that.data.username
+                console.log(backurl)
+                wx.redirectTo(
+                  {
+                    url: backurl
+                  }
+                )*/
+                getborromsg.call(that, bookhaveId);
+              } else {
+                that.setData({
+                  showTopTips: true,
+                  showTipsMsg: '留言失败！'
+                })
+              }
+              setTimeout(function () {
+                that.setData({
+                  showTopTips: false
+                });
+              }, 3000);
+            },
+            fail: function () {
               that.setData({
-                showTopTips: true,
-                showTipsMsg: '留言成功！'
-              });
-              var backurl = '../sendmsg/sendmsg?bookhaveId=' + that.data.bookhaveId + '&username=' + that.data.username
-              console.log(backurl)
-              wx.redirectTo(
-                {
-                  url: backurl
-                }
-              )
-            } else {
+                showLoading: false
+              })
+              message.show.call(that, {
+                content: '网络开小差了',
+                icon: 'offline',
+                duration: 3000
+              })
+            },
+            complete: function () {
               that.setData({
-                showTopTips: true,
-                showTipsMsg: '留言失败！'
+                showLoading: false,
+                btnDisable: false,
+                btnLoading: false
               })
             }
-            setTimeout(function () {
-              that.setData({
-                showTopTips: false
-              });
-            }, 3000);
-          },
-          fail: function () {
-            that.setData({
-              showLoading: false
-            })
-            message.show.call(that, {
-              content: '网络开小差了',
-              icon: 'offline',
-              duration: 3000
-            })
-          },
-          complete: function () {
-            that.setData({
-              showLoading: false,
-              btnDisable: false,
-              btnLoading: false
-            })
-          }
-        })
+          })
+        }
       }
-    }
+    setTimeout(function () {
+      that.setData({
+        showTopTips: false
+      });
+    }, 3000);
+    },
+  inputtextarea: function (e) {
+    this.setData({
+      inputCount: e.detail.value.length
+    })
+  }
 })
 
 function getborromsg(bookhaveId, cb, fail_cb, complete_cb)

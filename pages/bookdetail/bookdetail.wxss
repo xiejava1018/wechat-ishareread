@@ -196,8 +196,8 @@
 }
 
 .fd-bd-person-avatar {
-    width: 280rpx;
-    height: 400rpx;
+    width: 240rpx;
+    height: 340rpx;
 }
 
 .fd-bd-person-name {

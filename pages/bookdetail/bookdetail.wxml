@@ -2,6 +2,9 @@
     <block wx:if="{{showLoading}}">
         <view class="loading">玩命加载中…</view>
     </block>
+    <block wx:elif="{{isShowContentMsg}}">
+        <view>{{showContentMsg}}</view>
+    </block>
     <block wx:elif="{{showContent}}">
     <!-- fd: film detail -->
         <view class="fd-hd">
@@ -49,7 +52,14 @@
             <view class="fd-bd-tag">
             </view>
             <view class="fd-bd-title">同类好书</view>
-            <view class="fd-bd-tag">
+            <view class="fd-bd-person">
+                <block wx:for="{{similarBookList}}" wx:for-item="similarBookItem" wx:key="similarBookItem">
+                    <view class="fd-bd-person-item" data-doubanId="{{similarBookItem.bookDoubanId}}" bindtap="viewBookDetail">
+                        <image class="fd-bd-person-avatar" src="{{similarBookItem.bookImage}}"></image>
+                        <view class="fd-bd-person-name">{{similarBookItem.bookName}}</view>
+                        <view class="fd-bd-person-role">{{similarBookItem.bookAuthor}}</view>
+                    </view>
+                </block>
             </view>
         </view>
     </block> 

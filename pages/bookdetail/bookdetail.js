@@ -9,7 +9,8 @@ Page({
     showContent: false,
     isBookFavorite:false,
     qtype:'',
-    id:''
+    id:'',
+    similarBookList:[]
   },
   onLoad: function (options) {
     var that = this;
@@ -31,21 +32,29 @@ Page({
     })
     isharereadservice.fetchBookDetail.call(that, url, id, function (data) {
       console.log(data);
-      
-      /// 判断是否收藏
-      wx.getStorage({
-        key: 'book_favorite',
-        success: function (res) {
-          for (var i = 0; i < res.data.length; i++) {
-            if (res.data[i].id == data.id) {
-              that.setData({
-                isBookFavorite: true
-              })
-            }
-          }
-        }
-      })
+      if(data.code===6000)
+      {}
+      else
+      {
+        /// 判断是否收藏
+        wx.getStorage({
+          key: 'book_favorite',
+          success: function (res) {
 
+              for (var i = 0; i < res.data.length; i++) {
+                if (res.data[i].id == data.id) {
+                  that.setData({
+                    isBookFavorite: true
+                  })
+                }
+              }
+            
+          }
+        })
+
+        //同类好书
+        getSimilarBookList.call(that,data.bookId);
+      }
       /*
       // 存储浏览历史
       var date = util.getDate()
@@ -104,10 +113,10 @@ Page({
       */
     })
   },
-  viewPersonDetail: function (e) {
+  viewBookDetail: function (e) {
     var data = e.currentTarget.dataset;
     wx.redirectTo({
-      url: '../personDetail/personDetail?id=' + data.id
+      url: '../bookdetail/bookdetail?qtype=id&id=' + data.doubanid
     })
   },
   viewebookshare: function (e)
@@ -214,3 +223,45 @@ Page({
     })
   }
 })
+
+function getSimilarBookList(bookId, cb, fail_cb, complete_cb) {
+  var that = this;
+  var url = config.apiList.getSimilarBookList + bookId;
+  wx.request({
+    url: url,
+    data: {
+    },
+    method: 'GET',
+    header: {
+      "Content-Type": "application/json,application/json"
+    },
+    success: function (res) {
+      console.log(res.data.body);
+      that.setData({
+        similarBookList: res.data.body.similarBookList,
+        showLoading: false
+      })
+      typeof cb == 'function' && cb(res.data)
+    },
+    fail: function () {
+      that.setData({
+        showLoading: false
+      })
+      message.show.call(that, {
+        content: '网络开小差了',
+        icon: 'offline',
+        duration: 3000
+      })
+      typeof fail_cb == 'function' && fail_cb()
+    },
+    complete: function () {
+      that.setData({
+        showLoading: false
+      })
+      typeof complete_cb == 'function' && complete_cb()
+    }
+  })
+}
+module.exports = {
+  getSimilarBookList: getSimilarBookList
+}

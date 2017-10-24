@@ -28,6 +28,9 @@
             <block wx:if="{{bookDetail.ShareEBook}}">
               <view class="fd-shareebook" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="viewebookshare" >电子书</view>
             </block>
+            <block wx:if="{{bookDetail.ShareBook}}">
+              <view class="fd-sharebook" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="shareBooklist" >纸质书</view>
+            </block>
         </view>
         <view class="fd-data">
             <view class="fd-data-item">

@@ -40,7 +40,7 @@
     position: absolute;
     z-index: 99;
     bottom: 30rpx;
-    left: 120rpx;
+    left: 40rpx;
     width: 160rpx;
     padding: 10rpx 30rpx;
     padding-left: 60rpx;
@@ -61,10 +61,30 @@
     position: absolute;
     z-index: 99;
     bottom: 30rpx;
-    left: 320rpx;
-    width: 200rpx;
+    left: 240rpx;
+    width: 148rpx;
     padding: 10rpx 30rpx;
-    padding-left: 60rpx;
+    padding-left: 20rpx;
+    font-size: 32rpx;
+    line-height: 1;
+    border-radius: 30rpx;
+    border: 1px solid #fff;
+    background-position: 20rpx center;
+    background-repeat: no-repeat;
+    background-size: 32rpx;
+    color: #fff;
+    transition: left .3s, color .3s, background-image .3s;
+}
+
+.fd-sharebook {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 99;
+    bottom: 30rpx;
+    left: 428rpx;
+    width: 148rpx;
+    padding: 10rpx 30rpx;
+    padding-left: 20rpx;
     font-size: 32rpx;
     line-height: 1;
     border-radius: 30rpx;
@@ -77,7 +97,7 @@
 }
 
 .fd-favorite-active {
-    left: 100rpx;
+    left: 20rpx;
     width: 190rpx;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADk0lEQVRoQ9Wa0VLaQBSGzwmNU00YZUbjZfFO6IX0CYpPUPsEtU9QfIKmT1B8guoT1D6B+ATFiwJ3wqWpM9ABsVNrTuckwakI2U2yKWkuyWbP/+1m/z17AkIKF/WLa9e3Kx8BYJ8ABghwYujjAyx0B6rDoeoOub+RU/4KAJWHfVPDtNq7quMpBxg52/sA2qfZQt23ptU5UgmhHuCydAGIxTkim6bVepFZgPDR92UTurv5jU5DFYTSGRg5pVMArIaLU7sWlAEMv29XkbRTmZFVOQvKAORGf4JHx6bV3peBFbVRAjBynlcAiK1T+srp7tZyodOVfmBOQ0UApSMAfBNNjJpZSAxw098u3t1qF9HE+60NfVxIujsnBhg5cUY/sFSCD/nNlh0HfvJMIoAg5+nHFcB5kqmPt5LMQiwAFv7z99OdO8I9AKzFBQjmoZ5DOlne6JzF6ScUgN0lh3erLmhVIigCUJEAKwiwFieY6Bk/c6UmADQRcaCB24An0Atzq3uA66vyKyCoEFEVAFngVDYpCp/6/SYRdTUNm4DQNNZbXzgiBu8x76BZEywakaahj3cxiYuIIqR/n45x6JT7ab3TaQN4a2bolAYIuJp2sFT6J+rxK1QHwHepBEi9UzqcLGI+YOykHk9tgHNDH1c9Gw2c6H+C8MUXulzxCPZDvxSSfQiinrF0U5mkHw92Yt55CdxGVhc1Af1A0Kqm9Y13a+96lEpkFWKW+JkA/GPWIOaJnwuQJYgw8aEAWYAQiRcCLBJCRrwUwAQiatUhyZ4lK14awIcoUxJRUZ81rZbUaVGqUZy6T1TB0+1l60ZSAFHKhkmF32cGkkVgOYDLso0I71WJk+mHJEsuUgCLObXJVe6kAIZOifOjlzIjp6oNAZ3lrbagVD8jF5ol4F87EGvg42LeahVEAyKcgSS1T1Fw0X2Z2qkQYBEOFMWJxAALcKD7mUE6MDfa9bCZEgIkcSBOCfztPm7Vgw5Nqx1aexUCxHEgTzhh3Vwae6M3+rVSA6RaVBAZJ5IAiFr4okNDv7GnS+Z+4WCZSzjSX3JknEgIIG+hdJzTyRZ99/JdDW1ZEFFSJwa4LHUB8dm8hcTTjKDV/j5oi+yR77O7AaEdukES9czN9ryv/l4YIcD1VWmPXPw8LYqFA5Kd9Kt7YNO8Vh4V1lCj18Z6+ySRC/HDAQR/y+Ig5wBuXfWfNoK/KbDjeDFQI1sknrX9Ae1as5bu7R6bAAAAAElFTkSuQmCC);
     color: #f4ea2a;

@@ -24,13 +24,15 @@
                 </view>
                 <view class="fd-intro-txt">出版日期：{{bookDetail.pubdate}}</view>
             </view>
+            <view class="fd-book-button">
             <view class="fd-favorite {{isBookFavorite ? 'fd-favorite-active' : ''}}" bindtap="favoriteBook">收藏</view>
             <block wx:if="{{bookDetail.ShareEBook}}">
-              <view class="fd-shareebook" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="viewebookshare" >电子书</view>
+              <view class="fd-sharebook" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="viewebookshare" >电子书</view>
             </block>
             <block wx:if="{{bookDetail.ShareBook}}">
               <view class="fd-sharebook" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="shareBooklist" >纸质书</view>
             </block>
+            </view>
         </view>
         <view class="fd-data">
             <view class="fd-data-item">
@@ -52,6 +54,18 @@
             <view class="fd-bd-title">作者简介</view>
             <view class="fd-bd-intro">{{bookDetail.author_intro}}</view>
             <view class="fd-bd-title">分享该书的书友</view>
+            <view class="fd-bd-shareperson-area">
+              <view class="fd-bd-sharebook-person">
+                <block wx:for="{{bookCanshareList}}" wx:for-item="bookCanshareItem" wx:key="bookCanshareItem">
+                  <view class="fd-bd-sharebook-person-item">{{bookCanshareItem.username}}</view>
+                </block>
+              </view>
+              <block wx:if="{{bookCanshareList.length>0}}">
+                <view class="fd-bd-sharebook-person-more" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="shareBooklist">
+                  更多>
+                </view>
+              </block>
+            </view>
             <view class="fd-bd-tag">
             </view>
             <view class="fd-bd-title">同类好书</view>

@@ -10,7 +10,8 @@ Page({
     isBookFavorite:false,
     qtype:'',
     id:'',
-    similarBookList:[]
+    similarBookList:[],
+    bookCanshareList: []
   },
   onLoad: function (options) {
     var that = this;
@@ -54,6 +55,8 @@ Page({
 
         //同类好书
         getSimilarBookList.call(that,data.bookId);
+        //分享该书的书友
+        getShareBookUsers.call(that, data.bookId);
       }
       /*
       // 存储浏览历史
@@ -214,6 +217,7 @@ Page({
     }
   },
   shareBooklist: function (e) {
+    console.log("this is test");
     var that = this;
     var data = e.currentTarget.dataset;
     var bookid = data.id;
@@ -224,6 +228,7 @@ Page({
   }
 })
 
+//获得同类好书
 function getSimilarBookList(bookId, cb, fail_cb, complete_cb) {
   var that = this;
   var url = config.apiList.getSimilarBookList + bookId;
@@ -262,6 +267,47 @@ function getSimilarBookList(bookId, cb, fail_cb, complete_cb) {
     }
   })
 }
+
+//获得分享书籍的书友
+function getShareBookUsers(bookId, cb, fail_cb, complete_cb) {
+  var that = this;
+  var url = config.apiList.getcansharelist + bookId;
+  wx.request({
+    url: url,
+    data: {
+    },
+    method: 'GET',
+    header: {
+      "Content-Type": "application/json,application/json"
+    },
+    success: function (res) {
+      console.log(res.data.body);
+      that.setData({
+        bookCanshareList: res.data.body.canshareList,
+        showLoading: false
+      })
+      typeof cb == 'function' && cb(res.data)
+    },
+    fail: function () {
+      that.setData({
+        showLoading: false
+      })
+      message.show.call(that, {
+        content: '网络开小差了',
+        icon: 'offline',
+        duration: 3000
+      })
+      typeof fail_cb == 'function' && fail_cb()
+    },
+    complete: function () {
+      that.setData({
+        showLoading: false
+      })
+      typeof complete_cb == 'function' && complete_cb()
+    }
+  })
+}
 module.exports = {
-  getSimilarBookList: getSimilarBookList
+  getSimilarBookList: getSimilarBookList,
+  getShareBookUsers: getShareBookUsers
 }

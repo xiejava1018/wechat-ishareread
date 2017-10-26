@@ -138,6 +138,13 @@ Page({
       url: '../searchResult/searchResult?url=' + encodeURIComponent(config.apiList.search.byTag) + '&keyword=' + keyword
     })
   },
+  
+  managebook:function(){
+    wx.navigateTo({
+      url: '../bookmanage/bookmanage'
+    })
+  }
+  ,
   favoriteBook: function () {
     var that = this;
     // 判断原来是否收藏，是则删除，否则添加

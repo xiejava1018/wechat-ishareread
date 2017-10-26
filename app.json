@@ -15,6 +15,7 @@
     "pages/sharebook/sharebook",
     "pages/sharelist/sharelist",
     "pages/sendmsg/sendmsg",
+    "pages/bookmanage/bookmanage",
     "pages/msg/msg_success"
   ],
   "window": {

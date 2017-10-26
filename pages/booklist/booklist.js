@@ -42,5 +42,13 @@ Page({
     if (!that.data.showLoading) {
       isharereadservice.fetchBookList.call(that, url, that.data.bookClassName, that.data.curPage, that.data.pageSize)
     }
+  },
+  actionSheetTap: function () {
+    wx.showActionSheet({
+      itemList: ['加入我的书架', '加入我的书单'],
+      success: function (e) {
+        console.log(e.tapIndex)
+      }
+    })
   }
 });

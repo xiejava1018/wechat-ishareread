@@ -13,7 +13,9 @@ Page({
     btnDisable: false,
     btnLoading: false,
     inputCount: 0,
-    borrowMsgs:[]
+    borrowMsgs:[],
+    distance:'',
+    userInfo:{}
   },
   onLoad: function (options) {
     var that = this;
@@ -21,10 +23,12 @@ Page({
     var bookhaveId = options.bookhaveId;
     var url = config.apiList.getusercanshare + bookhaveId;
     var ishareuserid = app.globalData.ishareuserid;
+    var userInfo = app.globalData.userInfo;
     that.setData({
       username: options.username,
       bookhaveId: bookhaveId,
-      ishareuserid: ishareuserid
+      ishareuserid: ishareuserid,
+      userInfo: userInfo
     })
     //判断是否登录
     console.log(ishareuserid)
@@ -37,7 +41,7 @@ Page({
     else{
         //取得书籍的分享信息
         wx.request({
-          url: url,
+          url: url + "/" + ishareuserid,
           method: 'GET',
           header: {
             "Content-Type": "application/json,application/json"
@@ -48,7 +52,8 @@ Page({
             if (res.data.status === "200") {
               that.setData({
                 userShare: res.data.body.userShare,
-                userShareDate: res.data.body.userShare.haveDate.substring(0, res.data.body.userShare.haveDate.length-2)
+                userShareDate: res.data.body.userShare.haveDate.substring(0, res.data.body.userShare.haveDate.length-2),
+                distance: res.data.body.distance
               });
               //
               getborromsg.call(that,bookhaveId);

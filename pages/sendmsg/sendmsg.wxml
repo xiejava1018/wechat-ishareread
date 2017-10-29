@@ -13,13 +13,13 @@
                 <view class="weui-media-box__desc">分享留言：{{userShare.shareRemark}}</view>
                 <view class="weui-media-box__info">
                     <view class="weui-media-box__info__meta"></view>
-                    <view class="weui-media-box__info__meta">{{userShareDate}}</view>
-                    <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">位置</view>
+                    <view class="weui-media-box__info__meta">位置：{{userInfo.province}},{{userInfo.city}}</view>
+                    <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">距我：{{distance}}</view>
                 </view>
             </view>
         </view>
             <scroll-view scroll-y="true" style="height: 420rpx;">
-             <view class="weui-media-box weui-media-box_text" data-sort-index="{{index}}" wx:for="{{borrowMsgs}}" wx:key="msgId">
+             <view class="weui-media-box  weui-media-box_text" data-sort-index="{{index}}" wx:for="{{borrowMsgs}}" wx:key="msgId">
                   <view class="weui-media-box__desc">{{item.borrowMsg}}</view>
                   <view class="weui-media-box__info">
                       <view class="weui-media-box__info__meta_right">{{item.msgerName}} {{item.msgTime}}</view>
@@ -40,7 +40,7 @@
         <input hidden name="bookhaveId" value="{{bookhaveId}}"/>
         <input hidden name="messagerId" value="{{ishareuserid}}"/>
         <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" form-type="submit" disabled="{{btnDisable}}" loading="{{btnLoading}}">确定</button>
+            <button class="weui-btn" type="primary" form-type="submit" disabled="{{btnDisable}}" loading="{{btnLoading}}">求分享</button>
         </view>
        </form>
     </block>

@@ -11,7 +11,8 @@ Page({
     showTopTips: false,
     showTipsMsg: "",
     userInfo:null,
-    openid:null
+    openid:null,
+    location:null,
   },
   onLoad: function (options) {
     var that = this;
@@ -19,11 +20,13 @@ Page({
     if (app.globalData.userInfo != null) {
       that.setData({
         userInfo: app.globalData.userInfo,
-        openid: app.globalData.openid
+        openid: app.globalData.openid,
+        location: app.globalData.location
       })
     } else {
       app.getUserInfo()
     }
+ 
     console.log(app.globalData.userInfo);
   },
   bindFormSubmit: function (e) {

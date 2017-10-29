@@ -10,4 +10,5 @@ page,
     padding-top: 60px;
     text-align: center;
 }
-.weui-navbar__slider{position:absolute;content:" ";left:2;bottom:0;width:15em;height:3px;background-color:#1aad19;-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s}
+
+.weui-navbar__slider{position:absolute;content:" ";left:2;bottom:0;width:9em;height:3px;background-color:#1aad19;-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s}

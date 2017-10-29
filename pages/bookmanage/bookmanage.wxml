@@ -11,12 +11,14 @@
             </view>
             <view class="weui-tab__panel">
                 <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-                
+
                   <view class="weui-btn-area">
-                    <button class="weui-btn" type="primary" bindtap="scanCode">添加到我的书架</button>
+                    <button class="weui-btn" type="primary" bindtap="scanCode">添加到我的书单</button>
                   </view>
+
                 </view>
-                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">想读</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 2}}">读过</view>
             </view>
         </view>
     </view>

@@ -4,6 +4,7 @@ App({
   onLaunch: function () {
     // 获取用户信息
     this.getUserInfo();
+    this.getUserlocation();
     this.initStorage();
   },
 
@@ -48,6 +49,18 @@ App({
       }
     })
   },
+
+  getUserlocation: function (cb) {
+    var that = this
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        that.globalData.location.latitude = res.latitude
+        that.globalData.location.longitude = res.longitude
+      }
+    })
+  },
+
   initStorage: function () {
     wx.getStorageInfo({
       success: function (res) {
@@ -117,9 +130,12 @@ App({
       }
     })
   },
+
+ 
   globalData: {
     userInfo: null,
     openid:null,
-    ishareuserid:null
+    ishareuserid:null,
+    location:{}
   }
 })

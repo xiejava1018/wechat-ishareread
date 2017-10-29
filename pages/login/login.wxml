@@ -37,6 +37,8 @@
       <input hidden name="wxopenid" value="{{openid}}"/>
       <input hidden name="wxnickname" value="{{userInfo.nickName}}"/>
       <input hidden name="wxavatarurl" value="{{userInfo.avatarUrl}}"/>
+      <input hidden name="longitude" value="{{location.longitude}}"/>
+      <input hidden name="latitude" value="{{location.latitude}}"/>
   </view>
 
   <view class="weui-btn-area">

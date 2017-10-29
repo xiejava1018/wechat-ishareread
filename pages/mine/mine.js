@@ -22,6 +22,7 @@ Page({
     } else {
       app.getUserInfo()
     }
+    console.log(app.globalData.location);
     typeof cb == 'function' && cb()
   },
   onShow: function () {

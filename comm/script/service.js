@@ -163,7 +163,8 @@ function fetcheBookShareList(url,cb, fail_cb) {
       success: function (res) {
         if (res.data.shareEbooks.length === 0) {
           that.setData({
-            hasMore: false
+            hasMore: false,
+            showLoading: false
           })
         } else {
           that.setData({

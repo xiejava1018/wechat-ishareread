@@ -42,3 +42,42 @@
     width: 750rpx;
     height: 300rpx;
 }
+.page-section{
+  width: 100%;
+  margin-bottom: 10rpx;
+}
+.page-section-spacing{
+  box-sizing: border-box;
+  padding: 0 80rpx;
+}
+
+.flex-wrp{
+  margin-top: 30rpx;
+  display:flex;
+}
+
+.flex-item{
+  width: 200rpx;
+  height: 100rpx;
+  font-size: 26rpx;
+}
+
+.demo-text-1{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #1AAD19;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #cfcfcf;
+}

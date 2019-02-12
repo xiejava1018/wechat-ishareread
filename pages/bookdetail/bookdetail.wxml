@@ -87,9 +87,11 @@
     <view class="weui-panel__hd">
     <view class="input-area">
       <form bindsubmit="search">
-        <view class="search-type" ></view>
-          <input class="search-txt" name="keyword" placeholder="评论..."/>
-          <button class="search-btn" formType="submit">发表</button>
+        <!--<view class="search-type" ></view>-->
+        <input class="send-txt" name="keyword" placeholder="评论..."/>
+        <button class="send-btn" formType="submit">发表</button>
+        <image src="../../image/other.png" mode="aspectFill" class="other-icon">  
+        </image>
       </form>
     </view>
     </view>

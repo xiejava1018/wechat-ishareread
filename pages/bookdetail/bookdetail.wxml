@@ -81,5 +81,21 @@
         </view>
     </block> 
 </view>
+
+<view class='opt_view'>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">
+    <view class="input-area">
+      <form bindsubmit="search">
+        <view class="search-type" ></view>
+          <input class="search-txt" name="keyword" placeholder="评论..."/>
+          <button class="search-btn" formType="submit">发表</button>
+      </form>
+    </view>
+    </view>
+    <view class="weui-panel__bd"></view>
+  </view>
+</view>
+
 <import src="../../component/message/message.wxml"/>
 <template is="message" data="{{message: message}}"/>

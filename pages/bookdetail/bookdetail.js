@@ -8,6 +8,7 @@ Page({
     showLoading: true,
     showContent: false,
     isBookFavorite:false,
+    isShowOptPanel:false,
     qtype:'',
     id:'',
     similarBookList:[],
@@ -138,7 +139,22 @@ Page({
       url: '../searchResult/searchResult?url=' + encodeURIComponent(config.apiList.search.byTag) + '&keyword=' + keyword
     })
   },
-  
+  showOptPanel:function()
+  {
+     var that=this;
+     if (that.data.isShowOptPanel)
+     {
+       that.setData({
+         isShowOptPanel: false
+       })
+     }
+     else
+     {
+       that.setData({
+         isShowOptPanel: true
+       })
+     }
+  },
   managebook:function(){
     wx.navigateTo({
       url: '../bookmanage/bookmanage'

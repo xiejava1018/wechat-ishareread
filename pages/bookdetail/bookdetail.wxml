@@ -85,17 +85,29 @@
 <view class='opt_view'>
   <view class="weui-panel weui-panel_access">
     <view class="weui-panel__hd">
-    <view class="input-area">
-      <form bindsubmit="search">
-        <!--<view class="search-type" ></view>-->
-        <input class="send-txt" name="keyword" placeholder="评论..."/>
-        <button class="send-btn" formType="submit">发表</button>
-        <image src="../../image/other.png" mode="aspectFill" class="other-icon">  
-        </image>
-      </form>
+      <view class="input-area">
+        <form bindsubmit="sendmsg">
+          <!--<view class="search-type" ></view>-->
+          <input class="send-txt" name="keyword" placeholder="评论..."/>
+          <button class="send-btn" formType="submit">发表</button>
+          <image src="../../image/other.png" mode="aspectFill" class="other-icon" bindtap="showOptPanel">  
+          </image>
+        </form>
+      </view>
+      <block wx:if="{{isShowOptPanel}}">
+        <view class="opt-panel">
+            <view class="fd-data-item">
+                <view class="fd-data-title">读过</view>
+            </view>
+            <view class="fd-data-item">
+                <view class="fd-data-title">想读</view>
+            </view>
+            <view class="fd-data-item">
+                <view class="fd-data-title" data-id="{{bookDetail.bookId}}"  data-name="{{bookDetail.title}}"  bindtap="shareBook">分享</view>
+            </view>
+        </view>
+       </block>
     </view>
-    </view>
-    <view class="weui-panel__bd"></view>
   </view>
 </view>
 

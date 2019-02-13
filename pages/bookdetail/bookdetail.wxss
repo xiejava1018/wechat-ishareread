@@ -280,9 +280,9 @@
 
 .send-txt{
     box-sizing: border-box;
-    width: 100%;
+    width: 70%;
     height: 80rpx;
-    padding-left: 140rpx;
+    padding-left: 0rpx;
     padding-right: 20rpx;
     border-radius: 10rpx;
     border: 1px solid #eee;
@@ -293,7 +293,7 @@
     position: absolute;
     z-index: 11;
     top: 0;
-    right: 0;
+    right: 80rpx;
     height: 80rpx;
     width: 120rpx;
     text-align: center;
@@ -304,8 +304,19 @@
 }
 
 .other-icon {
+  position: absolute;
   top: 0;
   right: 0;
   width: 80rpx;
   height: 80rpx;
+}
+
+.opt-panel {
+margin-top: 10rpx;
+display:flex;
+height:50rpx;
+justify-content:space-around;
+align-items:center;
+border-top:1px solid #f4f4f4;
+
 }

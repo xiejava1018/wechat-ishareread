@@ -12,7 +12,7 @@
         </swiper-item>
     </block>
 </swiper>
-
+<!--
 <view class="page-section">
   <view class="weui-flex">
     <view class="weui-flex__item"><view class="placeholder">weui</view></view>
@@ -20,7 +20,7 @@
     <view class="weui-flex__item"><view class="placeholder">weui</view></view>
   </view>
 </view>
-
+-->
 <view class="view-sort">
     <view class="result">
          <view class="weui-panel weui-panel_access">
